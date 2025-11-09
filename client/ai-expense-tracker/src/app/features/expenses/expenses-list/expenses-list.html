@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Expenses</h2>
+    <button class="btn btn-primary" (click)="load()">Refresh</button>
+</div>
+
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Vendor</th>
+                <th class="text-end">Amount</th>
+                <th>Currency</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of expenses">
+                <td>{{ e.date | date:'mediumDate' }}</td>
+                <td>{{ e.vendor || '—' }}</td>
+                <td class="text-end">{{ e.amount }}</td>
+                <td>{{ e.currency }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div *ngIf="!expenses?.length" class="alert alert-info">No expenses yet.</div>
